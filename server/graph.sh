@@ -2,13 +2,6 @@
 
 PATH=$PATH:/usr/local/bin
 WORK_PATH=$1
-NEST_PATH=$HOME/temp_logger/
-KEY_FILE=$HOME/.ssh/id_dsa.nest
-REMOTE_HOST=guido.gunky.net
-REMOTE_USER=nest
-REMOTE_PATH=/usr/local/www/nginx/nest/
-
-transfer=1
 
 if [ ! -z "$WORK_PATH" ]
 then
@@ -17,6 +10,8 @@ else
 	echo "Using PWD"
 	DIR=$(pwd)
 fi
+
+. ${WORK_PATH}/graph_config.sh
 
 transfer() {
 	source_file=$1
