@@ -9,6 +9,7 @@ timezone() {
 }
 
 timezone
+install -b rc.local /etc/
 
 apt-get update
 apt-get install python-smbus git
