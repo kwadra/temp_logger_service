@@ -1,6 +1,7 @@
 #!/bin/sh
 
 PATH=$PATH:/usr/local/bin
+SENSOR_NAME=$2
 WORK_PATH=$1
 
 if [ ! -z "$WORK_PATH" ]
@@ -20,8 +21,8 @@ transfer() {
 	return $?
 }
 #daily
-OUT_NAME=temperature.svg
-RRD_FILE=${DIR}/temperature.rrd
+OUT_NAME=temp_${SENSOR_NAME}.svg
+RRD_FILE=${DIR}/temp_${SENSOR_NAME}.rrd
 
 rrdtool graph $DIR/$OUT_NAME \
 --width=800 \

@@ -13,5 +13,5 @@ def log_temp():
     temp=Decimal(request.args.get('temp'))
     humidity=Decimal(request.args.get('humidity'))
     sensor=request.args.get('sensor')
-    rrdtool.update("temperature.rrd", "N:{}:{}".format(temp, humidity))
+    rrdtool.update("temp_{}.rrd".format(sensor), "N:{}:{}".format(temp, humidity))
     return 'Location %s %s %s' %(sensor,temp,humidity)

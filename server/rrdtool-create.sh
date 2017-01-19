@@ -1,6 +1,6 @@
 #!/bin/sh
 
-OUTFILE=temp_bedroom.rrd
+OUTFILE=$1
 rrdtool create $OUTFILE --step 300 \
  DS:temp_1:GAUGE:600:50:120 \
  RRA:LAST:0.5:1:1200 \
