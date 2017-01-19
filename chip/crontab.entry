@@ -1,0 +1,1 @@
+*/5 * * * * $HOME/sht31.py >> $HOME/temp.log

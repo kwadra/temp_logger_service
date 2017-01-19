@@ -3,7 +3,14 @@ import smbus
 import time
 from datetime import datetime
 import requests
+import argparse
 
+
+parser = argparse.ArgumentParser(description='Log temp/humidity')
+parser.add_argument('--name', dest="name",help='Sensor name or location')
+args = parser.parse_args()
+
+sensor_name=args.name
 BUS_NUMBER=1 
 DEVICE_ADDR=0x44
 SHT31_MEAS_HIGHREP_STRETCH = 0x2C06
@@ -45,6 +52,6 @@ humidity = (100 * raw_humidity) / 65535.0
 #print ("Raw data: {}".format(data))
 print "{} Temp {:.2f}F,{:.2f} %RH".format(datetime.now(), fTemp, humidity)
 
-payload = {'sensor': 'livingroom','temp': "{:.3f}".format(fTemp)
+payload = {'sensor': sensor_name,'temp': "{:.3f}".format(fTemp)
 	, 'humidity': "{:.3f}".format(humidity)}
 r = requests.get('http://morningsun:5000/log_temp', params=payload)
