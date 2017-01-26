@@ -1,1 +1,1 @@
-*/5 * * * * $HOME/sht31.py >> $HOME/temp.log
+*/5 * * * * $HOME/sht31.py --name sensor_name --url http://morningsun:5000/log_temp >> $HOME/temp.log 

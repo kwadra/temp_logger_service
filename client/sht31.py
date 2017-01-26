@@ -8,6 +8,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Log temp/humidity')
 parser.add_argument('--name', dest="name",help='Sensor name or location')
+parser.add_argument('--url', dest="url",help='URL')
 args = parser.parse_args()
 
 sensor_name=args.name
@@ -54,4 +55,4 @@ print "{} Temp {:.2f}F,{:.2f} %RH".format(datetime.now(), fTemp, humidity)
 
 payload = {'sensor': sensor_name,'temp': "{:.3f}".format(fTemp)
 	, 'humidity': "{:.3f}".format(humidity)}
-r = requests.get('http://morningsun:5000/log_temp', params=payload)
+r = requests.get(args.url, params=payload)
